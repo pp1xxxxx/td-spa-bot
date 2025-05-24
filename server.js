@@ -1,4 +1,4 @@
-require('dotenv').config();  // ⬅️ 加這一行
+require('dotenv').config(); 
 
 const express = require('express');
 const line = require('@line/bot-sdk');
@@ -13,8 +13,8 @@ const client = new line.Client(config);
 
 app.post('/webhook', line.middleware(config), (req, res) => {
   Promise.all(req.body.events.map(handleEvent))
-    .then(result => res.json(result))
-    .catch(err => {
+    .then((result) => res.json(result))
+    .catch((err) => {
       console.error(err);
       res.status(500).end();
     });
@@ -34,11 +34,4 @@ function handleEvent(event) {
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`伺服器啟動於 ${port}`);
-});
-
-}
-
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`啟動在 ${port}`);
 });
