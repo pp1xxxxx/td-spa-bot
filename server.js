@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config();  // ⬅️ 加這一行
 
 const express = require('express');
 const line = require('@line/bot-sdk');
@@ -29,6 +29,13 @@ function handleEvent(event) {
     type: 'text',
     text: `您傳的是：${event.message.text}`
   });
+}
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`伺服器啟動於 ${port}`);
+});
+
 }
 
 const port = process.env.PORT || 3000;
